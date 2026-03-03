@@ -1,0 +1,1 @@
+const synonyms = ["hello"]
