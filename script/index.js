@@ -28,19 +28,42 @@ const loadLevelWord = (id) => {
 }
 
 
-const loadwordDetail =async (id) =>{
-    const url =`https://openapi.programming-hero.com/api/word/${id}`;
+const loadwordDetail = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/word/${id}`;
     // console.log(url);
     const res = await fetch(url);
     const details = await res.json();
     displayWordDetails(details.data);
 };
 
-const displayWordDetails =(word) =>{
+const displayWordDetails = (word) => {
     console.log(word);
     const detailsBox = document.getElementById('details-container');
-    // detailsBox.innerHTML= "Hi  Js";
-     document.getElementById('word_modal').showModal();
+    detailsBox.innerHTML = `
+    <div class="">
+                    <h2 class="text-2xl font-bold">
+                        ${word.word} ( <i class="fa-solid fa-microphone-lines"></i> :${word.pronunciation})
+                    </h2>
+                </div>
+
+                <div class="">
+                    <h2 class=" font-bold">Meaning </h2>
+                    <p>${word.meaning}</p>
+                </div>
+
+                <div class="">
+                    <h2 class=" font-bold">Example</h2>
+                    <p>${word.sentence}</p>
+                </div>
+
+                <div class="">
+                    <h2 class=" font-bold">সমার্থক শব্দ গুলো</h2>
+                    <span class="btn">syn1</span>
+                    <span class="btn">syn1</span>
+                    <span class="btn">syn1</span>
+                </div>
+    `;
+    document.getElementById('word_modal').showModal();
 }
 
 
